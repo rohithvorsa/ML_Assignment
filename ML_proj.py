@@ -15,18 +15,24 @@ digits = datasets.load_digits()
 def train_model(classifier_name, X_train, y_train):
     if classifier_name == 'Logistic Regression':
         model = LogisticRegression()
+        model.fit(X_train, y_train)
+        return model
     elif classifier_name == 'Neural Networks':
         model = MLPClassifier(max_iter=1000)
+        model.fit(X_train, y_train)
+        return model
     elif classifier_name == 'Naïve Bayes':
         model = GaussianNB()
-    else:
-        model = None
-
-    if model:
         model.fit(X_train, y_train)
         return model
     else:
-        return None
+        model = None
+
+    # if model:
+    #     model.fit(X_train, y_train)
+    #     return model
+    # else:
+    #     return None
 
 # Function to make predictions
 def make_prediction(model, inputs):
