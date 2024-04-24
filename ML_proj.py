@@ -66,6 +66,7 @@ def main():
     # Make predictions
     if st.button("Make Prediction"):
         if 'model' not in st.session_state:
+            st.write(model.type)
             st.write("Error: Model not trained. Please train the model first.")
         else:
             model = st.session_state.model
