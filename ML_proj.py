@@ -37,7 +37,8 @@ def train_model(classifier_name, X_train, y_train):
 # Function to make predictions
 def make_prediction(model, inputs):
     prediction = model.predict(inputs)
-    return prediction
+    accuracy = accuracy_score(y_test,y_train)
+    return accuracy
 
 def main():
     st.title("Machine Learning Model Predictor")
