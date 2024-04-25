@@ -115,13 +115,15 @@ selected_classifier = st.sidebar.selectbox("Select Classifier", list(classifiers
 st.write("### Enter Feature Values")
 if selected_dataset == "IRIS":
     feature_names = datasets["IRIS"].feature_names
+    user_inputs = []
+    for feature in feature_names:
+        value = st.number_input(f"Enter value for {feature}", step=0.01)
+        user_inputs.append(value)
 else:
-    feature_names = [f"Pixel {i}" for i in range(64)]  # Digits dataset has 64 features
+    #feature_names = [f"Pixel {i}" for i in range(64)]  # Digits dataset has 64 features
+    st.write("features in digits dataset are taken from testing split")
 
-user_inputs = []
-for feature in feature_names:
-    value = st.number_input(f"Enter value for {feature}", step=0.01)
-    user_inputs.append(value)
+
 
 # 5. Prediction
 if st.button("Make Prediction"):
@@ -138,11 +140,13 @@ if st.button("Make Prediction"):
     else:
         X_train, X_test, y_train, y_test = train_test_split(datasets["Digits"].data, datasets["Digits"].target, test_size=0.2, random_state=42)
         selected_model.fit(X_train, y_train)
-        prediction = selected_model.predict(y_test)
+        prediction = selected_model.predict(X_test)
+        accuracy = accuracy_score(y_test,y_pred)
         st.write("### Prediction Result")
-        st.write(f"The model predicts the class as: {prediction[0]}")
-
-   
+        st.write(f"The model accuracy is: {accuracy}")
+        cm = confusion_matrix(y_test,y_pred)
+        st.write("Confusion Matrix:")
+        st.write(cm)   
 
 # 6. User Interface (Already organized in logical structure)
 
