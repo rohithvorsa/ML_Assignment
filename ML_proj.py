@@ -138,7 +138,7 @@ if st.button("Make Prediction"):
     else:
         X_train, X_test, y_train, y_test = train_test_split(datasets["Digits"].data, datasets["Digits"].target, test_size=0.2, random_state=42)
         selected_model.fit(X_train, y_train)
-        prediction = selected_model.predict(X_test)
+        prediction = selected_model.predict(y_test)
         st.write("### Prediction Result")
         st.write(f"The model predicts the class as: {prediction[0]}")
 
