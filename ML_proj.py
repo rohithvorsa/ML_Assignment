@@ -144,7 +144,7 @@ if st.button("Make Prediction"):
         accuracy = accuracy_score(y_test,y_pred)
         st.write("### Prediction Result")
         st.write(f"The model accuracy is: {accuracy}")
-        cm = confusion_matrix(y_test,y_pred)
+        cm = confusion_matrix(y_test,prediction)
         st.write("Confusion Matrix:")
         st.write(cm)   
 
