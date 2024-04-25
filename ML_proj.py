@@ -126,6 +126,14 @@ for feature in feature_names:
 # 5. Prediction
 if st.button("Make Prediction"):
     selected_model = classifiers[selected_classifier]
+
+    if selected_dataset == "IRIS":
+        X_train, X_test, y_train, y_test = train_test_split(datasets["IRIS"].data, datasets["IRIS"].target, test_size=0.2, random_state=42)
+    else:
+        X_train, X_test, y_train, y_test = train_test_split(datasets["Digits"].data, datasets["Digits"].target, test_size=0.2, random_state=42)
+
+    selected_model.fit(X_train, y_train)  # Train the model
+
     X = np.array(user_inputs).reshape(1, -1)  # Reshape inputs to match model's input shape
     prediction = selected_model.predict(X)
     st.write("### Prediction Result")
