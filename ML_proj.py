@@ -135,7 +135,8 @@ if st.button("Make Prediction"):
 
         X = np.array(user_inputs).reshape(1, -1)  # Reshape inputs to match model's input shape
         prediction = selected_model.predict(X)
-        accuracy = accuracy_score(y_test,prediction)
+        y_pred = selected_model.predict(X_test)
+        accuracy = accuracy_score(y_test,y_pred)
         st.write("### Prediction Result")
         st.write(f"The model predicts the class as: {prediction[0]}")
         st.write(f"The model accuracy is: {accuracy}")
