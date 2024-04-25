@@ -60,6 +60,7 @@ def main():
     if st.button("Train Model"):
         model = train_model(classifier_name, X_train, y_train)
         if model:
+            st.session_state.model = model
             st.write("Model trained successfully!")
         else:
             st.write("Error: Model not trained.")
@@ -70,7 +71,6 @@ def main():
             #st.write(model.type)
             st.write("Error: Model not trained. Please train the model first.")
         else:
-            model = st.session_state.model
             inputs = st.text_input("Enter feature values separated by commas (e.g., 5.1, 3.5, 1.4, 0.2):")
             if inputs:
                 inputs = [[float(x.strip()) for x in inputs.split(',')]]
