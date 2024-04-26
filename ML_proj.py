@@ -6,7 +6,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
-
+import numpy as np
 
 # Introduction
 st.title("Machine Learning Model Predictor")
